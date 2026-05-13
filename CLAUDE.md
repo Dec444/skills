@@ -13,3 +13,19 @@ Five canonical triage roles using their default label strings (`needs-triage`, `
 ### Domain docs
 
 Single-context layout — one `CONTEXT.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.
+
+## Skill prerequisites
+
+### `literature-note`
+
+Needs a PDF text-extractor. The skill tries them in this order and stops at the first one that works — install any one of:
+
+- `pip3 install --user pypdf` (recommended — pure Python, no system deps)
+- `brew install poppler` (provides `pdftotext`)
+- `pip3 install --user pdfplumber` (used by `anthropic-skills:pdf` fallback)
+
+Also requires `curl` (universal) for arXiv / direct-PDF URL inputs.
+
+### `latex-check`
+
+No external dependencies. Reads `.tex` files directly.
